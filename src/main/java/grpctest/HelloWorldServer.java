@@ -5,6 +5,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 import grpctest.HelloServiceGrpc.HelloServiceImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.protobuf.services.ProtoReflectionService;
 import io.grpc.stub.StreamObserver;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +22,7 @@ public class HelloWorldServer {
     int port = 50051;
     server = ServerBuilder.forPort(port)
         .addService(new HelloServiceImpl())
+        .addService(ProtoReflectionService.newInstance())
         .build()
         .start();
     logger.info("Server started, listening on " + port);
