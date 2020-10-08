@@ -136,8 +136,6 @@ public class HelloWorldServer {
       double delay = (new Random().nextGaussian() + 5) * 10;
       long startTime = System.nanoTime();
 
-      ExemplarUtils.putSpanContextAttachments(mmap, tracer.getCurrentSpan().getContext());
-
       try {
         HelloResponse res = HelloResponse.newBuilder().setResponse("Hello " + req.getMessage() + ", to you!").build();
         Thread.sleep((long) delay);
@@ -145,7 +143,11 @@ public class HelloWorldServer {
       } catch (InterruptedException i) {
       } finally {
         ss.close();
-        mmap.put(M_LATENCY_MS, (System.nanoTime() - startTime) * 1e3).record();
+        double latency = (System.nanoTime() - startTime) * 1e6;
+        logger.info("Measured a latency of " + latency + "ms");
+        mmap.put(M_LATENCY_MS, latency);
+        ExemplarUtils.putSpanContextAttachments(mmap, tracer.getCurrentSpan().getContext());
+        mmap.record();
         responseObserver.onCompleted();
       }
     }
