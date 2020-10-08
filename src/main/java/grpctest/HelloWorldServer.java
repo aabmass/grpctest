@@ -143,7 +143,7 @@ public class HelloWorldServer {
       } catch (InterruptedException i) {
       } finally {
         ss.close();
-        double latency = (System.nanoTime() - startTime) * 1e6;
+        double latency = (System.nanoTime() - startTime) / 1e6;
         logger.info("Measured a latency of " + latency + "ms");
         mmap.put(M_LATENCY_MS, latency);
         ExemplarUtils.putSpanContextAttachments(mmap, tracer.getCurrentSpan().getContext());
