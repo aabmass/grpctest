@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7247939-37b8-4dbf-9380-9339d10c0193" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/grpctest/HelloWorldServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/proto/hello_service.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grpctest/HelloWorldServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grpctest/HelloWorldServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +92,9 @@
       <updated>1602106361318</updated>
       <workItem from="1602106362574" duration="755000" />
       <workItem from="1602107152910" duration="1947000" />
-      <workItem from="1602112427987" duration="7000" />
+      <workItem from="1602112427987" duration="899000" />
+      <workItem from="1602113660593" duration="2186000" />
+      <workItem from="1602116433276" duration="1230000" />
     </task>
     <servers />
   </component>
@@ -125,5 +114,9 @@
       <screen x="-350" y="-1417" width="2560" height="1417" />
     </state>
     <state x="696" y="-1062" key="#com.intellij.ide.util.MemberChooser/-350.-1417.2560.1417/0.23.1792.1097@-350.-1417.2560.1417" timestamp="1602107373237" />
+    <state x="475" y="-1099" width="865" height="1032" key="search.everywhere.popup" timestamp="1602112465414">
+      <screen x="-350" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="475" y="-1099" width="865" height="1032" key="search.everywhere.popup/-350.-1417.2560.1417/0.23.1792.1097@-350.-1417.2560.1417" timestamp="1602112465414" />
   </component>
 </project>
