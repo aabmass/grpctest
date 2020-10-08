@@ -24,6 +24,7 @@ import io.opencensus.trace.samplers.Samplers;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import io.opencensus.common.Scope;
@@ -82,8 +83,8 @@ public class HelloWorldServer {
   }
 
   private static void enableViews() {
-    Aggregation latencyDistribution = Distribution
-        .create(BucketBoundaries.create(Arrays.asList(0.0, 25.0, 100.0, 200.0, 400.0, 800.0, 10000.0)));
+    Aggregation latencyDistribution = Distribution.create(
+        BucketBoundaries.create(Arrays.asList(0.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0)));
 
     View view = View.create(Name.create("myapp/latency"), "The distribution of the latencies", M_LATENCY_MS,
         latencyDistribution, Collections.emptyList());
@@ -132,17 +133,19 @@ public class HelloWorldServer {
     public void sayHello(HelloRequest req, StreamObserver<HelloResponse> responseObserver) {
       Scope ss = tracer.spanBuilder("grpctest_span").startScopedSpan();
       MeasureMap mmap = STATS_RECORDER.newMeasureMap();
-      mmap.put(M_LATENCY_MS, Math.random() * 100);
+      double delay = (new Random().nextGaussian() + 5) * 10;
+      long startTime = System.nanoTime();
+
       ExemplarUtils.putSpanContextAttachments(mmap, tracer.getCurrentSpan().getContext());
-      mmap.record();
 
       try {
         HelloResponse res = HelloResponse.newBuilder().setResponse("Hello " + req.getMessage() + ", to you!").build();
-        Thread.sleep(50);
+        Thread.sleep((long) delay);
         responseObserver.onNext(res);
       } catch (InterruptedException i) {
       } finally {
         ss.close();
+        mmap.put(M_LATENCY_MS, (System.nanoTime() - startTime) * 1e3).record();
         responseObserver.onCompleted();
       }
     }
