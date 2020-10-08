@@ -27,7 +27,6 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
-import io.opencensus.common.Scope;
 import io.opencensus.exporter.trace.stackdriver.StackdriverTraceConfiguration;
 import io.opencensus.exporter.trace.stackdriver.StackdriverTraceExporter;
 import io.opencensus.trace.Span;
@@ -110,7 +109,7 @@ public class HelloWorldServer {
     // For demo purposes, always sample
     TraceConfig traceConfig = Tracing.getTraceConfig();
     traceConfig.updateActiveTraceParams(
-        traceConfig.getActiveTraceParams().toBuilder().setSampler(Samplers.alwaysSample()).build());
+        traceConfig.getActiveTraceParams().toBuilder().setSampler(Samplers.probabilitySampler(0.1)).build());
     enableViews();
 
     // Enable OpenCensus exporters to export metrics to Stackdriver Monitoring.
