@@ -30,8 +30,10 @@ import java.util.logging.Logger;
 import io.opencensus.common.Scope;
 import io.opencensus.exporter.trace.stackdriver.StackdriverTraceConfiguration;
 import io.opencensus.exporter.trace.stackdriver.StackdriverTraceExporter;
+import io.opencensus.trace.Span;
 import io.opencensus.trace.Tracer;
 import io.opencensus.trace.Tracing;
+import io.opencensus.trace.Span.Options;
 
 public class HelloWorldServer {
 
@@ -131,22 +133,28 @@ public class HelloWorldServer {
 
     @Override
     public void sayHello(HelloRequest req, StreamObserver<HelloResponse> responseObserver) {
-      Scope ss = tracer.spanBuilder("grpctest_span").startScopedSpan();
+      Span span = tracer.spanBuilder("grpctest_span").startSpan();
       MeasureMap mmap = STATS_RECORDER.newMeasureMap();
       double delay = (new Random().nextGaussian() + 5) * 10;
       long startTime = System.nanoTime();
 
       try {
         HelloResponse res = HelloResponse.newBuilder().setResponse("Hello " + req.getMessage() + ", to you!").build();
+        // Simulated normal latency
         Thread.sleep((long) delay);
         responseObserver.onNext(res);
       } catch (InterruptedException i) {
       } finally {
-        ss.close();
+        span.end();
+
         double latency = (System.nanoTime() - startTime) / 1e6;
         logger.info("Measured a latency of " + latency + "ms");
         mmap.put(M_LATENCY_MS, latency);
-        ExemplarUtils.putSpanContextAttachments(mmap, tracer.getCurrentSpan().getContext());
+
+        if (span.getOptions().contains(Options.RECORD_EVENTS)) {
+          ExemplarUtils.putSpanContextAttachments(mmap, span.getContext());
+        }
+
         mmap.record();
         responseObserver.onCompleted();
       }
