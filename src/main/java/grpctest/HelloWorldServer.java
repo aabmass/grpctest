@@ -138,7 +138,9 @@ public class HelloWorldServer {
 
       try {
         HelloResponse res = HelloResponse.newBuilder().setResponse("Hello " + req.getMessage() + ", to you!").build();
+        Thread.sleep(50);
         responseObserver.onNext(res);
+      } catch (InterruptedException i) {
       } finally {
         ss.close();
         responseObserver.onCompleted();
