@@ -26,6 +26,8 @@ dependencies {
     compile group: 'io.opencensus', name: 'opencensus-exporter-trace-stackdriver', version: "${ocVersion}"
     compile group: 'io.opencensus', name: 'opencensus-exporter-stats-stackdriver', version: "${ocVersion}"
     compile group: 'io.opencensus', name: 'opencensus-contrib-grpc-metrics', version: "${ocVersion}"
+    compile group: 'io.grpc', name: 'grpc-census', version: "${grpcVersion}"
+
     runtime "io.opencensus:opencensus-impl:${ocVersion}"
 }
 
