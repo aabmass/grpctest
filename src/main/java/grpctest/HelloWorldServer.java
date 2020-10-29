@@ -110,6 +110,8 @@ public class HelloWorldServer {
     TraceConfig traceConfig = Tracing.getTraceConfig();
     traceConfig.updateActiveTraceParams(
         traceConfig.getActiveTraceParams().toBuilder().setSampler(Samplers.probabilitySampler(1 / 10.0)).build());
+    // traceConfig.updateActiveTraceParams(
+    // traceConfig.getActiveTraceParams().toBuilder().setSampler(Samplers.alwaysSample()).build());
     enableViews();
 
     // Enable OpenCensus exporters to export metrics to Stackdriver Monitoring.
