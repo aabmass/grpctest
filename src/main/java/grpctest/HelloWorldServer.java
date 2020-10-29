@@ -109,7 +109,7 @@ public class HelloWorldServer {
     // For demo purposes, always sample
     TraceConfig traceConfig = Tracing.getTraceConfig();
     traceConfig.updateActiveTraceParams(
-        traceConfig.getActiveTraceParams().toBuilder().setSampler(Samplers.probabilitySampler(1 / 10.0)).build());
+        traceConfig.getActiveTraceParams().toBuilder().setSampler(Samplers.probabilitySampler(1 / 100.0)).build());
     // traceConfig.updateActiveTraceParams(
     // traceConfig.getActiveTraceParams().toBuilder().setSampler(Samplers.alwaysSample()).build());
     enableViews();
