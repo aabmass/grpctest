@@ -14,6 +14,6 @@ $ ./gradlew installDist
 $ GCP_PROJECT_ID="<project string>" ./build/install/GrpcTest/bin/hello-server
 
 # In another terminal, run requests against it
-$ for i in {1..10000}; do grpc_cli_local call localhost:50051 SayHello "message: 'gRPC CLI'" ; done
+$ ./ghzcommand.sh
 ```
 
